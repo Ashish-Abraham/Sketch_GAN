@@ -1,3 +1,5 @@
+#TODO
+
 import torch
 import torchvision
 from torch import nn
@@ -5,7 +7,7 @@ from models import discriminator, global_discriminator, local_discriminator
 from models import generator
 from train_funcs import _weights_init, display_progress, configure_optimizers
 
-
+s
 # These configurations are from paper
 adv_criterion = nn.BCEWithLogitsLoss() 
 recon_criterion = nn.L1Loss() 
@@ -54,6 +56,7 @@ def train_GAN(gen, disc, dataloader, max_epochs, adversarial_criterion, recon_cr
  
         """
         -Main training function for SketchGAN
+        -TODO : Add Classfier loss
 
         -adversarial_loss = nn.BCEWithLogitsLoss()
 
