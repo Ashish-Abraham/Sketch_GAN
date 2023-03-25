@@ -1,14 +1,16 @@
 """
   - Train using Pytorch Lightning 
   - Improved Workflow
+  - Training Code
+    trainer = pl.Trainer(max_epochs, no_of_gpus)
+    trainer.fit(sketchgan, dataloader)
 
   - Run the commands 
-    !pip install -q pytorch-lightning
-    !pip install config
-    !pip install GPUtil
+    ! pip install -q pytorch-lightning
+    ! pip install config
+    ! pip install GPUtil
 
 """
-
 
 
 import torch
