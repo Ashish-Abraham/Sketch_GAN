@@ -7,7 +7,7 @@ from models import discriminator, global_discriminator, local_discriminator
 from models import generator
 from train_funcs import _weights_init, display_progress, configure_optimizers
 
-s
+
 # These configurations are from paper
 adv_criterion = nn.BCEWithLogitsLoss() 
 recon_criterion = nn.L1Loss() 
