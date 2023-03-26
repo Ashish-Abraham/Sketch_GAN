@@ -7,7 +7,7 @@ from models import generator
 
 # initialize weights
 def _weights_init(m):
-    m = m.to(device)
+    m = m.to(device)  # use device = 'cuda' 
     if isinstance(m, (nn.Conv2d, nn.ConvTranspose2d)):
         torch.nn.init.normal_(m.weight, 0.0, 0.02)
     if isinstance(m, nn.BatchNorm2d):
