@@ -56,16 +56,6 @@ The paper proposes a cascade Encode-Decoder network to complete the input sketch
 ## Data Preparation
 
 
-
-
-
-## Evaluation Preparation
-
-
-
-
-
-
 ## Model Training
 
 
