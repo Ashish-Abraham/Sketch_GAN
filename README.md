@@ -19,8 +19,8 @@
 Pytorch implementation of the SketchGAN paper. <br>
 [SketchGAN: Joint Sketch Completion and Recognition with Generative Adversarial Network](https://openaccess.thecvf.com/content_CVPR_2019/papers/Liu_SketchGAN_Joint_Sketch_Completion_and_Recognition_With_Generative_Adversarial_Network_CVPR_2019_paper.pdf)  
 [Fang Liu](https://scholar.google.com/citations?user=X9iggBcAAAAJ&hl=zh-CN)<sup>1,2</sup>, [ Xiaoming Deng](https://alanspike.github.io/)<sup>1</sup>, [Yu-Kun Lai](https://scholar.google.com/citations?user=6czTBiUAAAAJ&hl=en)<sup>3</sup>, [ Yong-Jin Liu](https://www.linkedin.com/in/jiazhuo-wang-065624102)<sup>4 *</sup>, [Cuixia Ma](https://scholar.google.com/citations?user=tBIAgtgAAAAJ)<sup>1,2 *</sup>, [Hongan Wang](https://coe.northeastern.edu/people/wang-yanzhi/)<sup>1,2 *</sup>,<br>
-<sup>1</sup>State Key Laboratory of Computer Science and Beijing Key Lab of Human-Computer Interaction, Institute of Software, Chinese Academy of Sciences, <sup>2</sup>University of Chinese Academy of Sciences
-<sup>3</sup>Cardiff University 
+<sup>1</sup>State Key Laboratory of Computer Science and Beijing Key Lab of Human-Computer Interaction, Institute of Software, Chinese Academy of Sciences, <sup>2</sup>University of Chinese Academy of Sciences,
+<sup>3</sup>Cardiff University, 
 <sup>4</sup>Tsinghua University <br>
 In CVPR 2019.  
 
