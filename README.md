@@ -54,14 +54,34 @@ The paper proposes a cascade Encode-Decoder network to complete the input sketch
   ```
 
 ## Data Preparation
+-  Training image directory should be of the following structure
+  ```
+  ├── image_paths.csv
+
+  ├── trainA
+    ....
+  ├── trainB
+    ....
+  ├── valA
+    ....
+  └── valB
+    ....
+  ```
+- Folders with A suffix contain corrupted sketches and those with B contain target sketches.
+- The GAN should map A->B.
+- Each image.png in __B folder contains corresponding imagec.png in __A folder.
+- Use data_csv_script.py to generate corresponding csv file from dataset for training.
 
 
 ## Model Training
-
+The repo contains all code required to implement the GAN. Edit the scripts given or export the code in scripts to a jupyter notebook appropriately to train. Make sure cuda is available.
 
 
 
 ## Citation
 ```
 F. Liu, X. Deng, Y. -K. Lai, Y. -J. Liu, C. Ma and H. Wang, "SketchGAN: Joint Sketch Completion and Recognition With Generative Adversarial Network," 2019 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), Long Beach, CA, USA, 2019, pp. 5823-5832, doi: 10.1109/CVPR.2019.00598.
+```
+```
+Yu, Q., Yang, Y., Liu, F. et al. Sketch-a-Net: A Deep Neural Network that Beats Humans. Int J Comput Vis 122, 411–425 (2017). https://doi.org/10.1007/s11263-016-0932-3
 ```
