@@ -34,6 +34,7 @@ classifier_model.load_state_dict(torch.load('model_weights.pth'))  # add path to
 adv_criterion = nn.BCEWithLogitsLoss() 
 recon_criterion = nn.L1Loss() 
 lambda_recon = 100
+lambda_classifier=0.5
 
 n_epochs = 20
 
