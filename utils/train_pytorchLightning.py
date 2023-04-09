@@ -11,16 +11,23 @@
     ! pip install GPUtil
 
 """
-
+# TODO
+"""
+> define variable target_class by obtaining it from the dataset
+"""
 
 import torch
 import torchvision
 import pytorch_lightning as pl
 from torch import nn
 from models import discriminator, global_discriminator, local_discriminator
-from models import generator
-from train_funcs import _weights_init, display_progress, configure_optimizers
+from models import generator, classifier
+from train_funcs import _weights_init, display_progress, configure_optimizers, get_classifier_loss
 from tqdm.auto import tqdm
+
+# initialize classifier
+classifier_model = classifier.Sketch_A_Net(in_channels=1)
+classifier_model.load_state_dict(torch.load('model_weights.pth'))  # add path to classifier weights correctly
 
 
 # These configurations are from paper
@@ -46,15 +53,15 @@ class SketchGAN(pl.LightningModule):
 
     def __init__(
                   self, in_channels, out_channels, batch_size,local_input_shape=(3,128,128), global_input_shape=(3,256,256), 
-                  arc=2, learning_rate=0.002, lambda_recon=100, display_step=25, 
+                  arc=2, learning_rate=0.002, lambda_recon=100, lambda_classifier=0.5, display_step=25, 
                 ):
 
         super().__init__()
         self.save_hyperparameters()
         
         self.display_step = display_step
-        self.gen = Generator(in_channels, out_channels, batch_size)
-        self.disc = ContextDiscriminator(local_input_shape, global_input_shape, arc=2)
+        self.gen = generator.Generator(in_channels, out_channels, batch_size)
+        self.disc = discriminator.ContextDiscriminator(local_input_shape, global_input_shape, arc=2)
 
         # intializing weights
         self.gen = self.gen.apply(_weights_init)
@@ -69,12 +76,14 @@ class SketchGAN(pl.LightningModule):
         fake_images = nn.functional.interpolate(fake_images, size=128)
         disc_logits = self.disc((fake_images, conditioned_images))
         adversarial_loss = self.adversarial_criterion(disc_logits, torch.ones_like(disc_logits))
+        classifier_loss = get_classifier_loss(fake_images, target_class, classifier_model)   # target_class to be defined
 
         # reconstruction loss
         recon_loss = self.recon_criterion(fake_images, real_images)
         lambda_recon = self.hparams.lambda_recon
+        lambda_classifier = self.hparams.lambda_classifier
 
-        return adversarial_loss + lambda_recon * recon_loss
+        return adversarial_loss + lambda_recon * recon_loss + lambda_classifier*classifier_loss
 
     def _disc_step(self, real_images, conditioned_images):
         fake_images = self.gen(conditioned_images).detach()

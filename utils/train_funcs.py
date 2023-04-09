@@ -3,6 +3,7 @@ import torchvision
 from torch import nn
 from models import discriminator, global_discriminator, local_discriminator
 from models import generator
+from models import classifier
 
 
 # initialize weights
@@ -33,4 +34,11 @@ def display_progress(cond, fake, real, gen_loss, figsize=(10,5), ):
 def configure_optimizers(gen, disc, lr):
     gen_opt = torch.optim.Adam(gen.parameters(), lr=lr)
     disc_opt = torch.optim.Adam(disc.parameters(), lr=lr)
-    return disc_opt, gen_opt    
+    return disc_opt, gen_opt  
+
+# get loss value from classifier
+def get_classifier_loss(input, ground_truth, model):
+    output = model(input)
+    loss_fn = nn.CrossEntropyLoss()
+    loss = loss_fn(output, ground_truth)
+    return loss  

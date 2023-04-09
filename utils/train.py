@@ -4,8 +4,12 @@ import torch
 import torchvision
 from torch import nn
 from models import discriminator, global_discriminator, local_discriminator
-from models import generator
-from train_funcs import _weights_init, display_progress, configure_optimizers
+from models import generator, classifier
+from train_funcs import _weights_init, display_progress, configure_optimizers, get_classifier_loss
+
+# initialize classifier
+classifier_model = classifier.Sketch_A_Net(in_channels=1)
+classifier_model.load_state_dict(torch.load('model_weights.pth'))  # add path to classifier weights correctly
 
 
 # These configurations are from paper
@@ -40,7 +44,7 @@ def _disc_step(gen, disc, adversarial_criterion, real_images, conditioned_images
 
 
 # generator training step
-def _gen_step(gen, disc, adversarial_criterion, recon_criterion, real_images, conditioned_images, lambda_recon):
+def _gen_step(gen, disc, adversarial_criterion, recon_criterion, real_images, conditioned_images, lambda_recon, lambda_classifier):
         fake_images = gen(conditioned_images).detach()
         fake_images = nn.functional.interpolate(fake_images, size=128)
         disc_logits = disc((fake_images, conditioned_images))
@@ -48,15 +52,16 @@ def _gen_step(gen, disc, adversarial_criterion, recon_criterion, real_images, co
 
         # calculate reconstruction loss
         recon_loss = recon_criterion(fake_images, real_images)
+        classifier_loss = get_classifier_loss(fake_images, target_class, classifier_model)   # target_class to be defined
 
-        return adversarial_loss + lambda_recon * recon_loss
+        return adversarial_loss + lambda_recon * recon_loss + lambda_classifier*classifier_loss
 
 
-def train_GAN(gen, disc, dataloader, max_epochs, adversarial_criterion, recon_criterion, lr=0.002, lambda_recon=100):    
+def train_GAN(gen, disc, dataloader, max_epochs, adversarial_criterion, recon_criterion, lr=0.002, lambda_recon=100, lambda_classifier=0.5):    
  
         """
         -Main training function for SketchGAN
-        -TODO : Add Classfier loss
+        -TODO : define variable target_class for classifier by obtaining it from dataset, may have to edit dataloader and csv file
 
         -adversarial_loss = nn.BCEWithLogitsLoss()
 
@@ -82,7 +87,7 @@ def train_GAN(gen, disc, dataloader, max_epochs, adversarial_criterion, recon_cr
                     loss = d_loss
                     optimizer_idx = 1
                 elif optimizer_idx == 1:
-                    g_loss = _gen_step(gen, disc, adversarial_criterion, recon_criterion, real, condition, lambda_recon)
+                    g_loss = _gen_step(gen, disc, adversarial_criterion, recon_criterion, real, condition, lambda_recon, lambda_classifier)
                     optimizer_G.zero_grad()
                     g_loss.backward(retain_graph=True)
                     optimizer_G.step()
