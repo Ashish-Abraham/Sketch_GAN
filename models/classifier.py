@@ -28,15 +28,15 @@ class Block2(nn.Module):
     def __init__(self):
         super(Block2,self).__init__()
         self.conv_layer1 = nn.Sequential(
-            nn.Conv2D(in_channels=128, out_channels=256, kernal_size=3, stride=1, padding=1)
+            nn.Conv2D(in_channels=128, out_channels=256, kernal_size=3, stride=1, padding=1),
             nn.ReLU(inplace=True)
         )
         self.conv_layer2 = nn.Sequential(
-            nn.Conv2D(in_channels=256, out_channels=256, kernal_size=3, stride=1, padding=1)
+            nn.Conv2D(in_channels=256, out_channels=256, kernal_size=3, stride=1, padding=1),
             nn.ReLU(inplace=True)
         )
         self.conv_layer3 = nn.Sequential(
-            nn.Conv2D(in_channels=256, out_channels=256, kernal_size=3, stride=1, padding=1)
+            nn.Conv2D(in_channels=256, out_channels=256, kernal_size=3, stride=1, padding=1),
             nn.ReLU(inplace=True)
         )
         self.pool_layer = nn.MaxPool2d(kernel_size=3, stride=2, padding=0)
@@ -51,20 +51,20 @@ class Block2(nn.Module):
 class Block3(nn.Module):
     def __init__(self):
         super(Block3, self).__init__()
-        self.conv_layer1 = nn.Conv2d(in_channels=256, out_channels=512, kernel_size=7, stride=1, padding=0)
-        self.relu1 = nn.ReLU(inplace=True)
-        self.dropout1 = nn.Dropout(p=0.5)
-        self.conv_layer2 = nn.Conv2d(in_channels=512, out_channels=512, kernel_size=1, stride=1, padding=0)
-        self.relu2 = nn.ReLU(inplace=True)
-        self.dropout2 = nn.Dropout(p=0.5)
+        self.conv_layer1 = nn.Sequential(
+          nn.Conv2d(in_channels=256, out_channels=512, kernel_size=7, stride=1, padding=0),
+          nn.ReLU(inplace=True),
+          nn.Dropout(p=0.5),
+        )
+        self.conv_layer2 = nn.Sequential(
+          nn.Conv2d(in_channels=512, out_channels=512, kernel_size=1, stride=1, padding=0),
+          nn.ReLU(inplace=True),
+          nn.Dropout(p=0.5)
+        )
         
     def forward(self, x):
         x = self.conv_layer1(x)
-        x = self.relu1(x)
-        x = self.dropout1(x)
         x = self.conv_layer2(x)
-        x = self.relu2(x)
-        x = self.dropout2(x)
         return x
 
 
