@@ -1,12 +1,11 @@
 # Sketch-GAN
 [CVPR](https://openaccess.thecvf.com/content_CVPR_2019/papers/Liu_SketchGAN_Joint_Sketch_Completion_and_Recognition_With_Generative_Adversarial_Network_CVPR_2019_paper.pdf) | [paperswithcode](https://paperswithcode.com/paper/sketchgan-joint-sketch-completion-and)
 
-<table cellpadding="0" cellspacing="0" >
+<table cellpadding="10" cellspacing="10" >
   <tr>
     <td  align="center">Input<br> <img src="images/input.gif" width=200px></td>
-    <td  align="center">Night<br> <img src="images/night.gif" width=200px></td>
-    <td  align="center">Style<br> <img src="images/style.gif" width=200px></td>
-    <td  align="center">Anime<br> <img src="images/anime.gif" width=200px></td>
+    <td  align="center">Ground Truth<br> <img src="images/night.gif" width=200px></td>
+    <td  align="center">Output<br> <img src="images/style.gif" width=200px></td>
   </tr>
 </table>
 
