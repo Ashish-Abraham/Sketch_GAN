@@ -1,19 +1,7 @@
 # Sketch-GAN
 [CVPR](https://openaccess.thecvf.com/content_CVPR_2019/papers/Liu_SketchGAN_Joint_Sketch_Completion_and_Recognition_With_Generative_Adversarial_Network_CVPR_2019_paper.pdf) | [paperswithcode](https://paperswithcode.com/paper/sketchgan-joint-sketch-completion-and)
 
-<table cellpadding="10" cellspacing="10" >
-  <tr>
-    <td  align="center">Input<br> <img src="images/input.gif" width=200px></td>
-    <td  align="center">Ground Truth<br> <img src="images/night.gif" width=200px></td>
-    <td  align="center">Output<br> <img src="images/style.gif" width=200px></td>
-  </tr>
-</table>
-
-
-
-<p align="center">
-  <img src="images/comparison.png" width=400>
-</p>
+<img src="images/cover.png" alt="">
 
 Pytorch implementation of the SketchGAN paper. <br>
 [SketchGAN: Joint Sketch Completion and Recognition with Generative Adversarial Network](https://openaccess.thecvf.com/content_CVPR_2019/papers/Liu_SketchGAN_Joint_Sketch_Completion_and_Recognition_With_Generative_Adversarial_Network_CVPR_2019_paper.pdf)  
@@ -75,7 +63,25 @@ The paper proposes a cascade Encode-Decoder network to complete the input sketch
 ## Model Training
 The repo contains all code required to implement the GAN. Edit the scripts given or export the code in scripts to a jupyter notebook appropriately to train. Make sure cuda is available.
 
-
+## Results
+<table cellpadding="10" cellspacing="10" >
+  <tr>
+    <td  align="center">Input<br> <img src="images/result3c.png" width=200px></td>
+    <td  align="center">Ground Truth<br> <img src="images/result3.png" width=200px></td>
+    <td  align="center">Output<br> <img src="images/result3output.png" width=200px></td>
+  </tr>
+    <tr>
+    <td  align="center"><img src="images/result2c.png" width=200px></td>
+    <td  align="center"><img src="images/result2.png" width=200px></td>
+    <td  align="center"><img src="images/result2output.png" width=200px></td>
+  </tr>
+    </tr>
+    <tr>
+    <td  align="center"><img src="images/result1c.png" width=200px></td>
+    <td  align="center"><img src="images/result1.png" width=200px></td>
+    <td  align="center"><img src="images/result1output.png" width=200px></td>
+  </tr>
+</table>
 
 ## Citation
 ```
