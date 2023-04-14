@@ -1,7 +1,7 @@
 # Sketch-GAN
 [CVPR](https://openaccess.thecvf.com/content_CVPR_2019/papers/Liu_SketchGAN_Joint_Sketch_Completion_and_Recognition_With_Generative_Adversarial_Network_CVPR_2019_paper.pdf) | [paperswithcode](https://paperswithcode.com/paper/sketchgan-joint-sketch-completion-and)
 
-<img src="images/cover.png" alt="">
+<img src="images/cover.jpg" alt="An image">
 
 Pytorch implementation of the SketchGAN paper. <br>
 [SketchGAN: Joint Sketch Completion and Recognition with Generative Adversarial Network](https://openaccess.thecvf.com/content_CVPR_2019/papers/Liu_SketchGAN_Joint_Sketch_Completion_and_Recognition_With_Generative_Adversarial_Network_CVPR_2019_paper.pdf)  
