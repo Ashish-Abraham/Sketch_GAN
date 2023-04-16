@@ -63,7 +63,7 @@ The paper proposes a cascade Encode-Decoder network to complete the input sketch
 ## Model Training
 The repo contains all code required to implement the GAN. Edit the scripts given or export the code in scripts to a jupyter notebook appropriately to train. Make sure cuda is available.
 
-## Results
+## Initial Results
 <table cellpadding="10" cellspacing="10" >
   <tr>
     <td  align="center">Input<br> <img src="images/result3c.png" width=200px></td>
